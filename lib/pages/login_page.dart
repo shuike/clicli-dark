@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String name = '';
   String pwd = '';
-  bool isDo = false;
+  bool isDo = false;//是否请求登录状态
 
   @override
   Widget build(BuildContext context) {
@@ -44,22 +44,30 @@ class _LoginPageState extends State<LoginPage> {
               maxLengthEnforced: true,
               decoration: InputDecoration(labelText: '用户名'),
               onChanged: (v) {
-                name = v;
+                setState(() {
+                  name = v;
+                });
               },
             ),
             TextField(
               maxLines: 1,
               maxLengthEnforced: true,
-              decoration: InputDecoration(labelText: '密码'),
+              decoration: InputDecoration(
+                labelText: '密码',
+              ),
               obscureText: true,
               onChanged: (v) {
-                pwd = v;
+                setState(() {
+                  pwd = v;
+                });
               },
             ),
             SizedBox(height: 20),
-            FlatButton(
+            RaisedButton(
               child: Text('登录'),
-              onPressed: isDo
+              color: Theme.of(context).accentColor,
+              textColor: Colors.white,
+              onPressed: (name.isEmpty || pwd.isEmpty) || isDo
                   ? null
                   : () async {
                       showSnackBar('登录中···');
