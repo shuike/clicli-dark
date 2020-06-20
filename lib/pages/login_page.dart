@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String name = '';
   String pwd = '';
-  bool isDo = false;//是否请求登录状态
+  bool isDo = false;
 
   @override
   Widget build(BuildContext context) {
